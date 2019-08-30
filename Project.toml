@@ -1,0 +1,17 @@
+name = "GeoDatasets"
+uuid = "7876af07-990d-54b4-ab0e-23690620f79a"
+authors = ["Alexander Barth <barth.alexander@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+CodecZlib = "944b1d66-785c-5afd-91f1-9de20f533193"
+RemoteFiles = "cbe49d4c-5af1-5b60-bb70-0a60aa018e1b"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
