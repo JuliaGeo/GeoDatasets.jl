@@ -1,6 +1,6 @@
 name = "GeoDatasets"
-uuid = "7876af07-990d-54b4-ab0e-23690620f79a"
 authors = ["Alexander Barth <barth.alexander@gmail.com>"]
+uuid = "ddc7317b-88db-5cb5-a849-8449e5df04f9"
 version = "0.1.0"
 
 [deps]
