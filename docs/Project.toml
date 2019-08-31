@@ -1,6 +1,6 @@
 [deps]
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
-GeoDatasets = "7876af07-990d-54b4-ab0e-23690620f79a"
+PyPlot = "d330b81b-6aea-500a-939a-2ce795aea3ee"
 
 [compat]
 Documenter = "~0.20"
