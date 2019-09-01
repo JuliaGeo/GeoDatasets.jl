@@ -62,29 +62,33 @@ end
 # load a single level
 
 """
-    segments = gshhg(res,level::Integer)
+    segments = GeoDatasets.gshhg(res,level::Integer)
 
-A Global Self-consistent, Hierarchical, High-resolution Geography Database (about 150 Mb), https://www.soest.hawaii.edu/pwessel/gshhg/.
-The GSHHG is released under the GNU Lesser General Public License (Version 3).
+Extract a list of coastlines from the Global Self-consistent, Hierarchical, High-resolution Geography Database (about 150 Mb), https://www.soest.hawaii.edu/pwessel/gshhg/ and the resolution `res` and the level `level` (see below).
 
+The GSHHG is released under the GNU Lesser General Public License (Version 3) and described in
 Wessel, P., and W. H. F. Smith, A Global Self-consistent, Hierarchical, High-resolution Shoreline Database, J. Geophys. Res., 101, 8741-8743, 1996.
 
 Resolution is one of the following:
 
-f: Full resolution
-h: High resolution
-i: Intermediate resolution
-l: Low resolution
-c: Crude resolution
+| `res` | Resolution |
+|---|--------------------------|
+| f | Full resolution |
+| h | High resolution |
+| i | Intermediate resolution |
+| l | Low resolution |
+| c | Crude resolution |
 
 The shoreline data are distributed in 6 levels:
 
-Level 1: Continental land masses and ocean islands, except Antarctica.
-Level 2: Lakes
-Level 3: Islands in lakes
-Level 4: Ponds in islands within lakes
-Level 5: Antarctica based on ice front boundary.
-Level 6: Antarctica based on grounding line boundary.
+| `level` |                          |
+|---------|:-------------------------|
+|       1 | Continental land masses and ocean islands, except Antarctica |
+|       2 | Lakes |
+|       3 | Islands in lakes |
+|       4 | Ponds in islands within lakes |
+|       5 | Antarctica based on ice front boundary |
+|       6 | Antarctica based on grounding line boundary |
 
 
 """
@@ -92,28 +96,33 @@ gshhg(res,level::Integer) = gshhgload("GSHHS_shp/$(res)/GSHHS_$(res)_L$(level).s
 
 
 """
+
 The river database come with 11 levels:
 
-Level  1: Double-lined rivers (river-lakes).
-Level  2: Permanent major rivers.
-Level  3: Additional major rivers.
-Level  4: Additional rivers.
-Level  5: Minor rivers.
-Level  6: Intermittent rivers - major.
-Level  7: Intermittent rivers - additional.
-Level  8: Intermittent rivers - minor.
-Level  9: Major canals.
-Level 10: Minor canals.
-Level 11: Irrigation canals.
+| `level` |                          |
+|---------|:-------------------------|
+|       1 | Double-lined rivers (river-lakes) |
+|       2 | Permanent major rivers |
+|       3 | Additional major rivers |
+|       4 | Additional rivers |
+|       5 | Minor rivers |
+|       6 | Intermittent rivers - major |
+|       7 | Intermittent rivers - additional |
+|       8 | Intermittent rivers - minor |
+|       9 | Major canals |
+|      10 | Minor canals |
+|      11 | Irrigation canals |
 """
 WDBII_river(res,level::Integer) = gshhgload("WDBII_shp/$(res)/WDBII_river_$(res)_L$(@sprintf("%02d",level)).shp")
 
 """
 The political boundary data come in 3 levels:
 
-Level 1: National boundaries.
-Level 2: Internal (state) boundaries for the 8 largest countries only.
-Level 3: Maritime boundaries.
+| `level` |                          |
+|---------|--------------------------|
+|       1 | National boundaries |
+|       2 | Internal (state) boundaries for the 8 largest countries only |
+|       3 | Maritime boundaries |
 """
 WDBII_border(res,level::Integer) = gshhgload("WDBII_shp/$(res)/WDBII_border_$(res)_L$(level).shp")
 
