@@ -1,8 +1,12 @@
 module GeoDatasets
 
+using Printf
+
 using RemoteFiles
 using CodecZlib
-
+using Shapefile
+using GeoInterface
+using ZipFile
 
 """
     lon,lat,data = GeoDatasets.landseamask(;resolution='l',grid=5)
@@ -47,5 +51,6 @@ function landseamask(;resolution='l',grid=5)
     return lon,lat,reshape(data,length(lon),length(lat))
 end
 
+include("gshhg.jl")
 
 end
