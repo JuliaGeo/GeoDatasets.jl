@@ -10,3 +10,17 @@ Contributions are most welcome. Here are some guidelines:
 * data sets should be global in scope
 * available under a license allowing redistribution
 * hosted on a publicly available server
+
+
+# Installation
+
+Install Julia 1.0 (or later) and issue the commands:
+
+```julia
+using Pkg
+Pkg.add(PackageSpec(url="https://github.com/JuliaGeo/GeoDatasets.jl", rev="master"))
+```
+
+# Documentation
+
+Documentation is available [here](https://JuliaGeo.github.io/GeoDatasets.jl/dev).
