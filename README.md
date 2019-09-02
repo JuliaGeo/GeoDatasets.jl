@@ -4,7 +4,9 @@
 [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/JuliaGeo/GeoDatasets.jl?branch=master&svg=true)](https://ci.appveyor.com/project/Alexander-Barth/geodatasets-jl/branch/master)
 [![Coverage Status](https://coveralls.io/repos/JuliaGeo/GeoDatasets.jl/badge.svg?branch=master)](https://coveralls.io/r/JuliaGeo/GeoDatasets.jl?branch=master)
 
-The aim of this package is to give access to common geographics datasets. Currently it contains only a global land-sea-river mask.
+The aim of this package is to give access to common geographics datasets. Currently it contains:
+* the global land-sea-river mask from [GMT](http://gmt.soest.hawaii.edu/)
+* the [Global Self-consistent, Hierarchical, High-resolution Geography Database (gshhg)](https://www.soest.hawaii.edu/pwessel/gshhg/).
 
 Contributions are most welcome. Here are some guidelines:
 * data sets should be global in scope
