@@ -1,11 +1,11 @@
 
-function seg(coord::Vector{Vector{Vector{Vector{Float64}}}})
+function unwrap(coord::Vector{Vector{Vector{Vector{Float64}}}})
     @assert length(coord) == 1
     @assert length(coord[1]) == 1
     segcoord = coord[1][1];
 end
 
-function seg(coord::Vector{Vector{Vector{Float64}}})
+function unwrap(coord::Vector{Vector{Vector{Float64}}})
     @assert length(coord) == 1
     segcoord = coord[1];
 end
@@ -16,22 +16,20 @@ function gshhg(io::IO)
 
     segments = NTuple{2,Vector{Float64}}[]
     #Channel(ctype = NTuple{2,Vector{Float64}}) do channel
-    #Channel() do channel
-        for i = 1:length(handle.shapes)
-            segcoord = seg(GeoInterface.coordinates(handle.shapes[i]))
+    for i = 1:length(handle.shapes)
+        segcoord = unwrap(GeoInterface.coordinates(handle.shapes[i]))
 
-            seglen = length(segcoord)
+        seglen = length(segcoord)
 
-            segment = (Vector{Float64}(undef,seglen),Vector{Float64}(undef,seglen))
-            for l = 1:seglen
-                segment[1][l] = segcoord[l][1]
-                segment[2][l] = segcoord[l][2]
-            end
-
-            push!(segments,segment)
-            #put!(channel,segment)
-
+        segment = (Vector{Float64}(undef,seglen),Vector{Float64}(undef,seglen))
+        for l = 1:seglen
+            segment[1][l] = segcoord[l][1]
+            segment[2][l] = segcoord[l][2]
         end
+
+        push!(segments,segment)
+        #put!(channel,segment)
+    end
     #end
     return segments
 end
@@ -66,7 +64,7 @@ end
     segments = GeoDatasets.gshhg(res,level::Integer)
     segments = GeoDatasets.gshhg(res,levels::AbstractArray{<:Integer})
 
-Extract a list of coastlines from the [Global Self-consistent, Hierarchical, High-resolution Geography Database](https://www.soest.hawaii.edu/pwessel/gshhg/) (about 150 Mb) at the resolution `res` and the level `level` (see below). An array of multiple levels can also be provided as the parameter `levels`. `segments` is a vector of tuples representing a closed shoreline. Each tuple is composed by a longitude and latitude vector.
+Extract a list of coastlines from the [Global Self-consistent, Hierarchical, High-resolution Geography Database](https://www.soest.hawaii.edu/pwessel/gshhg/) (about 150 Mb) at the resolution `res` (`'f'`,`'h'`,`'i'`,`'l'` or `'c'`) and the level `level` (see below). An array of multiple levels can also be provided as the parameter `levels`. `segments` is a vector of tuples representing a closed shoreline. Each tuple is composed by a longitude and latitude vector.
 
 The GSHHG is released under the [GNU Lesser General Public License (Version 3)](http://www.gnu.org/licenses/lgpl.html) and is described in
 Wessel, P., and W. H. F. Smith, [A Global Self-consistent, Hierarchical, High-resolution Shoreline Database](https://www.soest.hawaii.edu/pwessel/gshhg/Wessel+Smith_1996_JGR.pdf), J. Geophys. Res., 101, 8741-8743, 1996.
@@ -94,9 +92,12 @@ The shoreline data are distributed in 6 levels:
 |       5 | Antarctica based on ice front boundary                       |
 |       6 | Antarctica based on grounding line boundary                  |
 
+If the 2nd parameter `levels` is ommited, then level 1 and 5 are loaded.
 
 """
 gshhg(res,level::Integer) = gshhgload("GSHHS_shp/$(res)/GSHHS_$(res)_L$(level).shp")
+# load multiple levels
+gshhg(res,levels::AbstractArray{<:Integer} = [1,5]) = reduce(vcat,gshhg.(res,levels))
 
 
 """
@@ -122,6 +123,7 @@ The river database comes with 11 levels:
 |      11 | Irrigation canals                 |
 """
 WDBII_river(res,level::Integer) = gshhgload("WDBII_shp/$(res)/WDBII_river_$(res)_L$(@sprintf("%02d",level)).shp")
+WDBII_river(res,levels::AbstractArray{<:Integer}) = reduce(vcat,WDBII_river.(res,levels))
 
 """
     segments = GeoDatasets.WDBII_border(res,level::Integer)
@@ -136,10 +138,8 @@ The political boundary data come in 3 levels:
 |       1 | National boundaries                                          |
 |       2 | Internal (state) boundaries for the 8 largest countries only |
 |       3 | Maritime boundaries                                          |
-"""
-WDBII_border(res,level::Integer) = gshhgload("WDBII_shp/$(res)/WDBII_border_$(res)_L$(level).shp")
 
-# load multiple levels
-gshhg(res,levels::AbstractArray{<:Integer}) = reduce(vcat,gshhg.(res,levels))
-WDBII_river(res,levels::AbstractArray{<:Integer}) = reduce(vcat,WDBII_river.(res,levels))
+If the 2nd parameter `level` is ommited, then level 1 (National boundaries) are loaded.
+"""
+WDBII_border(res,level::Integer = 1) = gshhgload("WDBII_shp/$(res)/WDBII_border_$(res)_L$(level).shp")
 WDBII_border(res,levels::AbstractArray{<:Integer}) = reduce(vcat,WDBII_border.(res,levels))
