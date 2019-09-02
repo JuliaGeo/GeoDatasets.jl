@@ -13,7 +13,7 @@ using ZipFile
 
 Load the land-sea-lake raster from basemap: 0 is ocean, 1 is land and 2 is lake.
 `grid` is the resolution in arc minutes and should be either 1.25, 2.5, 5 or 10.
-The parameter `resolution` should be either 'c','l','i','h' or 'f' 
+The parameter `resolution` should be either `'c'`,`'l'`,`'i'`,`'h'` or `'f'`
 (standing for crude, low, intermediate, high and full resolution)
 
 The data is downloaded from [basemap](https://github.com/matplotlib/basemap/tree/master/lib/mpl_toolkits/basemap/data).
