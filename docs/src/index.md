@@ -1,6 +1,10 @@
 # GeoDatasets
 
-GeoDatasets Julia package repo.
+The aim of this package is to give access to common geographics datasets such as:
+* location of shoreline
+* location of rivers
+* major political boundaries
+
 
 
 ## Land-sea-lake mask
@@ -34,3 +38,40 @@ savefig("landseamask-coastline-plot.png"); nothing # hide
 ```
 
 ![](landseamask-coastline-plot.png)
+
+
+## Global Self-consistent, Hierarchical, High-resolution Geography Database (gshhg)
+
+
+```@docs
+GeoDatasets.gshhg
+GeoDatasets.WDBII_river
+GeoDatasets.WDBII_border
+```
+
+```@example
+using PyPlot, GeoDatasets
+figure(figsize=(10,6)) # hide
+res = 'c'
+
+# coastline
+for (lon,lat) in GeoDatasets.gshhg(res,[1,5])
+    plot(lon,lat,"-",color="k", linewidth = 0.7)
+end
+
+# rivers
+for (lon,lat) in GeoDatasets.WDBII_river(res,[1,2])
+    plot(lon,lat,"b-",alpha = 0.5, linewidth = 0.5)
+end
+
+# borders
+for (lon,lat) in GeoDatasets.WDBII_border(res,1)
+    plot(lon,lat,"g-",alpha = 0.8, linewidth = 0.3)
+end
+gca().set_aspect(1)
+xlim(-180,180)
+ylim(-90,90)
+savefig("gshhg-plot.png"); nothing # hide
+```
+
+![](gshhg-plot.png)
