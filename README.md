@@ -20,7 +20,7 @@ Install Julia 1.0 (or later) and issue the commands:
 
 ```julia
 using Pkg
-Pkg.add(PackageSpec(url="https://github.com/JuliaGeo/GeoDatasets.jl", rev="master"))
+Pkg.add("GeoDatasets")
 ```
 
 # Documentation
