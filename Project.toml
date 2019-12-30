@@ -16,7 +16,7 @@ CodecZlib = "0.6"
 GeoInterface = "0.4"
 RemoteFiles = "0.3"
 Shapefile = "0.6"
-ZipFile = "0.8"
+ZipFile = "0.8, 0.9"
 julia = "1"
 
 [extras]
