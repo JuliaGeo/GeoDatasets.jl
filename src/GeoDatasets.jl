@@ -31,7 +31,7 @@ function landseamask(;resolution='l',grid=5)
     if !(grid ∈ Set([1.25,2.5,5.,10.]))
         error("grid should be either 1.25, 2.5, 5 or 10")
     end
-    if !(resolution ∈ Set(['c','l','i','h','f']))
+    if !(resolution ∈ Set(['c','l','i','h','f',"c","l","i","h","f"]))
         error("resolution should be either 'c','l','i','h' or 'f'")
     end
 
