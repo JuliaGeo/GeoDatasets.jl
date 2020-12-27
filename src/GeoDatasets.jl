@@ -16,7 +16,7 @@ Load the land-sea-lake raster from basemap: 0 is ocean, 1 is land and 2 is lake.
 The parameter `resolution` should be either `'c'`,`'l'`,`'i'`,`'h'` or `'f'`
 (standing for crude, low, intermediate, high and full resolution)
 
-The data is downloaded from [basemap](https://github.com/matplotlib/basemap/tree/master/lib/mpl_toolkits/basemap/data).
+The data is downloaded from [basemap](https://github.com/matplotlib/basemap/tree/master/lib/mpl_toolkits/basemap_data).
 
 The data is originally from [GMT](http://gmt.soest.hawaii.edu/) and distributed under the terms of the
 [GPL licences](https://github.com/matplotlib/basemap/blob/a551c2361314670dc7d95143190d3d48ba750d20/LICENSE_data).
@@ -35,8 +35,11 @@ function landseamask(;resolution='l',grid=5)
         error("resolution should be either 'c','l','i','h' or 'f'")
     end
 
+    url = "https://raw.githubusercontent.com/matplotlib/basemap/master/lib/mpl_toolkits/basemap_data/lsmask_$(grid)min_$(resolution).bin"
+    @debug "url for landseamask: $url"
+
     # download remote file if it is not yet available
-    @RemoteFile(lsmask, "https://raw.githubusercontent.com/matplotlib/basemap/master/lib/mpl_toolkits/basemap/data/lsmask_$(grid)min_$(resolution).bin")
+    @RemoteFile(lsmask, url)
     download(lsmask)
 
     # resolution in arc seconds
