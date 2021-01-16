@@ -48,7 +48,7 @@ end
 """
     LandSeaMask
 
-Encapsulates the `landseamask` data.
+Encapsulates the `landseamask` data, and provides the `is_land` function.
 """
 struct LandSeaMask{Tlon, Tlat, Tdata}
     lon::Tlon
