@@ -39,6 +39,13 @@ savefig("landseamask-coastline-plot.png"); nothing # hide
 
 ![](landseamask-coastline-plot.png)
 
+The `LandSeaMask` type is provided to encapsulate the output from `landseamask`, and
+provides simple functionality to determine whether a particular lat-lon is over land or not:
+```@example
+using GeoDatasets
+mask = GeoDatasets.LandSeaMask(; resolution='c', grid=5)
+GeoDatasets.is_land(mask, 52.2, 2.0)
+```
 
 ## Global Self-consistent, Hierarchical, High-resolution Geography Database (gshhg)
 
