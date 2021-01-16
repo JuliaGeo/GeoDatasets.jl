@@ -44,7 +44,7 @@ provides simple functionality to determine whether a particular lat-lon is over 
 ```@example
 using GeoDatasets
 mask = GeoDatasets.LandSeaMask(; resolution='c', grid=5)
-GeoDatasets.is_land(52.2, 2.0)
+GeoDatasets.is_land(mask, 52.2, 2.0)
 ```
 
 ## Global Self-consistent, Hierarchical, High-resolution Geography Database (gshhg)
