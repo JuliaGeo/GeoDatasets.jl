@@ -1,15 +1,6 @@
 using Test, GeoDatasets
 
-
-@testset "landseamask" begin
-    lon,lat,data = GeoDatasets.landseamask(;resolution='c',grid=5)
-    @test size(data,1) == length(lon)
-    @test size(data,2) == length(lat)
-
-    @test_throws ErrorException GeoDatasets.landseamask(;resolution='c',grid=-999)
-    @test_throws ErrorException GeoDatasets.landseamask(;resolution='g',grid=5)
-end
-
+include("land_sea_mask.jl")
 
 @testset "gshhg" begin
     res = 'c'
@@ -20,4 +11,3 @@ end
     # resolution 'x' does not exists
     @test_throws ErrorException GeoDatasets.gshhg('x',[1,5])
 end
-
