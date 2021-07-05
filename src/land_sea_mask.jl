@@ -25,7 +25,7 @@ function landseamask(;resolution='l',grid=5)
         error("resolution should be either 'c','l','i','h' or 'f'")
     end
 
-    url = "https://raw.githubusercontent.com/matplotlib/basemap/master/lib/mpl_toolkits/basemap_data/lsmask_$(grid)min_$(resolution).bin"
+    url = "https://raw.githubusercontent.com/matplotlib/basemap/v1.2.2rel/lib/mpl_toolkits/basemap/data/lsmask_$(grid)min_$(resolution).bin"
     @debug "url for landseamask: $url"
 
     # download remote file if it is not yet available
