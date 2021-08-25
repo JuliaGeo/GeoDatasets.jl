@@ -3,10 +3,9 @@
 
 Obtain ocean basin masks as a function of lat, lon, and depth, from
 https://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NODC/.WOA09/.Masks/.basin/index.html#info .
+See this URL for the key mapping integers to basin names.
 
 Returns an `NCDatasets.NCDataset` object from `NCDatasets.jl`.
-
-See also [`basin_codes`](@ref) to determine which flag corresponds to which basin.
 """
 function basin_masks()
 
