@@ -1,11 +1,12 @@
 name = "GeoDatasets"
 uuid = "ddc7317b-88db-5cb5-a849-8449e5df04f9"
 authors = ["Alexander Barth <barth.alexander@gmail.com>"]
-version = "0.1.6"
+version = "0.1.7"
 
 [deps]
 CodecZlib = "944b1d66-785c-5afd-91f1-9de20f533193"
 GeoInterface = "cf35fbd7-0cd7-5166-be24-54bfbe79505f"
+NCDatasets = "85f8d34a-cbdd-5861-8df4-14fed0d494ab"
 Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 RemoteFiles = "cbe49d4c-5af1-5b60-bb70-0a60aa018e1b"
 Shapefile = "8e980c4a-a4fe-5da2-b3a7-4b4b0353a2f4"
@@ -14,6 +15,7 @@ ZipFile = "a5390f91-8eb1-5f08-bee0-b1d1ffed6cea"
 [compat]
 CodecZlib = "0.6, 0.7"
 GeoInterface = "0.4, 0.5"
+NCDatasets = "0.10, 0.11"
 RemoteFiles = "0.3, 0.4"
 Shapefile = "0.6, 0.7"
 ZipFile = "0.8, 0.9"

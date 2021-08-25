@@ -47,6 +47,30 @@ mask = GeoDatasets.LandSeaMask(; resolution='c', grid=5)
 GeoDatasets.is_land(mask, 52.2, 2.0)
 ```
 
+## Basin Masks
+
+```@docs
+GeoDatasets.basin_masks
+```
+
+For example, this can be utilised to visualise the area corresponding to the Atlantic ocean:
+```@example
+using PyPlot, GeoDatasets
+figure(figsize=(10,6)) # hide
+
+# Load the mask data.
+data = GeoDatasets.basin_masks()
+
+# A value of 1 indicates the Atlantic ocean.
+is_atlantic = data["basin"][:, :, :][:, :, 1] .== 1
+
+# Get the latitudes and longitudes associated with the map.
+lat = data["Y"][:]
+lon = data["X"][:]
+
+plot(lon, lat, is_atlantic')
+```
+
 ## Global Self-consistent, Hierarchical, High-resolution Geography Database (gshhg)
 
 

@@ -1,6 +1,9 @@
-using Test, GeoDatasets
+using GeoDatasets
+using NCDatasets: NCDataset
+using Test
 
 include("land_sea_mask.jl")
+include("basin_masks.jl")
 
 @testset "gshhg" begin
     res = 'c'
