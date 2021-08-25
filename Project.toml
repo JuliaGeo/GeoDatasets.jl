@@ -15,7 +15,7 @@ ZipFile = "a5390f91-8eb1-5f08-bee0-b1d1ffed6cea"
 [compat]
 CodecZlib = "0.6, 0.7"
 GeoInterface = "0.4, 0.5"
-NCDatasets = "0.11"
+NCDatasets = "0.10, 0.11"
 RemoteFiles = "0.3, 0.4"
 Shapefile = "0.6, 0.7"
 ZipFile = "0.8, 0.9"
