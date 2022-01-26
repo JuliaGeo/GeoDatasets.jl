@@ -15,7 +15,7 @@ Contributions are most welcome. Here are some guidelines:
 
 # Installation
 
-Install Julia 1.0 (or later) and issue the following commands:
+Install [Julia](https://julialang.org/) 1.6 (or later) and issue the following commands:
 
 ```julia
 using Pkg
