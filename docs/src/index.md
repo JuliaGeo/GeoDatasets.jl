@@ -39,6 +39,26 @@ savefig("landseamask-coastline-plot.png"); nothing # hide
 
 ![](landseamask-coastline-plot.png)
 
+The land-sea mask can also be used to plot the land-masses as a gray patch:
+
+```@example
+using PyPlot, GeoDatasets, Statistics
+function plotmap(; patchcolor = [.8,.8,.8], resolution='i', grid=5)
+    xl = xlim()
+    yl = ylim()
+    lon,lat,data = GeoDatasets.landseamask(resolution=resolution,grid=grid)
+    contourf(lon,lat,data',levels = [0.5,2],colors = [patchcolor]);
+    xlim(xl)
+    ylim(yl)
+end
+plot([-10,37],[30,46]) # plot something more useful
+plotmap() # call colorbar() before plotmap()
+gca().set_aspect(1/cosd(mean(ylim()))) # set aspect ratio
+savefig("landseamask-coastline-plotmap.png"); nothing # hide
+```
+
+![](landseamask-coastline-plotmap.png)
+
 The `LandSeaMask` type is provided to encapsulate the output from `landseamask`, and
 provides simple functionality to determine whether a particular lat-lon is over land or not:
 ```@example
