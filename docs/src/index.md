@@ -43,6 +43,7 @@ The land-sea mask can also be used to plot the land-masses as a gray patch:
 
 ```@example
 using PyPlot, GeoDatasets, Statistics
+clf() # hide
 function plotmap(; patchcolor = [.8,.8,.8], resolution='i', grid=5)
     xl = xlim()
     yl = ylim()
