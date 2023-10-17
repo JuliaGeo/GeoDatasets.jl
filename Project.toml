@@ -1,7 +1,7 @@
 name = "GeoDatasets"
 uuid = "ddc7317b-88db-5cb5-a849-8449e5df04f9"
 authors = ["Alexander Barth <barth.alexander@gmail.com>"]
-version = "0.1.7"
+version = "0.1.8"
 
 [deps]
 CodecZlib = "944b1d66-785c-5afd-91f1-9de20f533193"
