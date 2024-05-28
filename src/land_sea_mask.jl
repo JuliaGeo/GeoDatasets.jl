@@ -71,9 +71,17 @@ is_land(mask::LandSeaMask, lat::Real, lon::Real) = nearest_point(mask, lat, lon)
 is_land(mask::LandSeaMask, (lat, lon)::Tuple{Real, Real}) = is_land(mask, lat, lon)
 
 function nearest_point(mask::LandSeaMask, lat::Real, lon::Real)
-    return mask.data[nearest_point_idx(mask.lon, lon), nearest_point_idx(mask.lat, lat)]
+    i = nearest_point_idx_periodic(mask.lon, lon)
+    j = nearest_point_idx(mask.lat, lat)
+    return mask.data[i,j]
 end
 
-function nearest_point_idx(xs::StepRangeLen, x::Real)
-    return convert(Int, floor((x - first(xs)) / (last(xs) - first(xs)) * length(xs)))
+function nearest_point_idx(xs::AbstractRange, x::Real)
+    idx = 1 + round(Int,(x - first(xs)) / step(xs))
+    return idx
+end
+
+function nearest_point_idx_periodic(xs::AbstractRange, x::Real)
+    idx = nearest_point_idx(xs, x)
+    return mod1(idx,length(xs))
 end
