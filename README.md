@@ -1,5 +1,5 @@
 [![Build Status](https://github.com/JuliaGeo/GeoDatasets.jl/workflows/CI/badge.svg)](https://github.com/JuliaGeo/GeoDatasets.jl/actions)
-[![codecov.io](http://codecov.io/github/JuliaGeo/GeoDatasets.jl/coverage.svg?branch=master)](http://codecov.io/github/JuliaGeo/GeoDatasets.jl?branch=master)
+[![codecov](https://codecov.io/gh/JuliaGeo/GeoDatasets.jl/graph/badge.svg?token=otI1he2KVl)](https://codecov.io/gh/JuliaGeo/GeoDatasets.jl)
 [![](https://img.shields.io/badge/docs-stable-blue.svg)](https://JuliaGeo.github.io/GeoDatasets.jl/stable)
 [![](https://img.shields.io/badge/docs-dev-blue.svg)](https://JuliaGeo.github.io/GeoDatasets.jl/dev)
 
